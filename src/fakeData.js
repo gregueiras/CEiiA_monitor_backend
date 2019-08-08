@@ -1,8 +1,9 @@
 const readline = require('readline')
 
-function inputHandler(keyPressed, sendData, clients) {
+function inputHandler(key, sendData, clients) {
   let location, data
-  switch (keyPressed) {
+  const type = key.shift ? 'O2C' : 'O2P'
+  switch (key.name) {
   case 'q': {
     location = 'S. Miguel'
     data = 8
@@ -39,32 +40,40 @@ function inputHandler(keyPressed, sendData, clients) {
   }
 
   case 'd': {
-    console.log(  Object.keys(clients).map(location => [location, clients[location].length]))
+    console.log(
+      Object.keys(clients).map(location => [
+        location,
+        clients[location].length,
+      ])
+    )
     break
   }
   default:
     break
   }
+  location += type
+
   if (location && data) {
     const receivingClients = clients[location]
     const newData = JSON.stringify([null, data]) //Timestamp, Value
-    
-    receivingClients && receivingClients.forEach(client => sendData(client, location, newData))
+
+    receivingClients &&
+      receivingClients.forEach(client => sendData(client, location, newData))
     if (receivingClients)
       console.log(`Message Sent: ${newData} ${receivingClients.length}x`)
   }
 }
 
 function fakeDataSetup(locations, sendData, clients) {
-  locations.push('S. Miguel')
-  locations.push('Horta')
+  locations.push('S. MiguelO2P')
+  locations.push('S. MiguelO2C')
+  locations.push('HortaO2P')
+  locations.push('HortaO2C')
 
   readline.emitKeypressEvents(process.stdin)
   process.stdin.setRawMode(true)
 
-  process.stdin.on('keypress', keyPressed =>
-    inputHandler(keyPressed, sendData, clients)
-  )
+  process.stdin.on('keypress', (_, key) => inputHandler(key, sendData, clients))
 }
 
 module.exports = {

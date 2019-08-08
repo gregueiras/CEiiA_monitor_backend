@@ -9,7 +9,6 @@ const locations = []
 fakeDataSetup(locations, sendData, clients)
 console.log(locations)
 setup()
-
 io.listen(port)
 console.log('listening on port ', port)
 
@@ -33,6 +32,14 @@ function handleConnection(client, location) {
   client.on(subName, () => {
     console.log(`client is subscribing to updates from ${location}`)
     addClient(location, client)
+    /*
+    client.on('disconnect', function() {
+      const index = clients[location].indexOf(client)
+      delete clients[location][index]
+      clients[location].splice(index, 1)
+    })
+  */  
+  
   })
 }
 
