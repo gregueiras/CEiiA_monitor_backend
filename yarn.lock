@@ -168,6 +168,18 @@ isarray@2.0.1:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
   integrity sha1-o32U7ZzaLVmGXJ92/llu4fM4dB4=
 
+leading-chars@~0.0.2:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/leading-chars/-/leading-chars-0.0.4.tgz#6a8be09b34c565298d27ce2e70be235d9209c0c5"
+  integrity sha1-aovgmzTFZSmNJ84ucL4jXZIJwMU=
+  dependencies:
+    xtend "^4.0.0"
+
+md5-jkmyers@~0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/md5-jkmyers/-/md5-jkmyers-0.0.1.tgz#b7d3df2807b91d5ec7f3373b57f24d60b0fa92bb"
+  integrity sha1-t9PfKAe5HV7H8zc7V/JNYLD6krs=
+
 md5@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/md5/-/md5-2.2.1.tgz#53ab38d5fe3c8891ba465329ea23fac0540126f9"
@@ -204,6 +216,13 @@ negotiator@0.6.2:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
+ns-elapsed@~0.0.2:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/ns-elapsed/-/ns-elapsed-0.0.3.tgz#3ca30a5064e7edb6ba85f2be19bcf1dcc078f0d2"
+  integrity sha1-PKMKUGTn7ba6hfK+Gbzx3MB48NI=
+  dependencies:
+    leading-chars "~0.0.2"
+
 object-component@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
@@ -222,6 +241,15 @@ parseuri@0.0.5:
   integrity sha1-gCBKUNTbt3m/3G6+J3jZDkvOMgo=
   dependencies:
     better-assert "~1.0.0"
+
+reverse-md5@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/reverse-md5/-/reverse-md5-0.0.4.tgz#e5841c2abfc48dbe67399ca2d9ce53faae5e1c1a"
+  integrity sha1-5YQcKr/Ejb5nOZyi2c5T+q5eHBo=
+  dependencies:
+    md5-jkmyers "~0.0.1"
+    ns-elapsed "~0.0.2"
+    xtend "~3.0.0"
 
 socket.io-adapter@~1.1.0:
   version "1.1.1"
@@ -285,6 +313,16 @@ xmlhttprequest-ssl@~1.5.4:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
   integrity sha1-wodrBhaKrcQOV9l+gRkayPQ5iz4=
+
+xtend@^4.0.0:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
+  integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
+
+xtend@~3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-3.0.0.tgz#5cce7407baf642cba7becda568111c493f59665a"
+  integrity sha1-XM50B7r2Qsunvs2laBEcST9ZZlo=
 
 yeast@0.1.2:
   version "0.1.2"
