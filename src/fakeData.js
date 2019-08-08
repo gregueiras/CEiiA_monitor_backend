@@ -48,7 +48,7 @@ function inputHandler(keyPressed, sendData, clients) {
   if (location && data) {
     console.log(location, data)
     const receivingClients = clients[location]
-    receivingClients.forEach(client => sendData(client, location, data))
+    receivingClients && receivingClients.forEach(client => sendData(client, location, data))
   }
 }
 

@@ -42,5 +42,4 @@ function addClient(location, client) {
   } else {
     clients[location] = [client]
   }
-  console.log(clients)
 }
