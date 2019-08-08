@@ -1,6 +1,6 @@
-const io = require("socket.io")()
-const md5 = require("md5")
-const { fakeDataSetup } = require("./fakeData")
+const io = require('socket.io')()
+const md5 = require('md5')
+const { fakeDataSetup } = require('./fakeData')
 
 const clients = {}
 const port = 3333
@@ -11,10 +11,10 @@ console.log(locations)
 setup()
 
 io.listen(port)
-console.log("listening on port ", port)
+console.log('listening on port ', port)
 
 function setup() {
-  io.on("connection", client => {
+  io.on('connection', client => {
     locations.forEach(location => handleConnection(client, location))
   })
 }
