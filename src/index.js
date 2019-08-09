@@ -29,16 +29,16 @@ function sendData(client, location, value) {
 function handleConnection(client, location) {
   const subName = getSubscriptionName(location)
   console.log(`Server listening to "${subName}"`)
-  client.on(subName, () => {
-    console.log(`client is subscribing to updates from ${location}`)
+  client.on(subName, (args) => {
+    console.log(`client is subscribing to updates from ${location} with ${args}`)
     addClient(location, client)
-    /*
-    client.on('disconnect', function() {
+    
+    client.on('disconnect', function () {
       const index = clients[location].indexOf(client)
+      console.log(location, index)
       delete clients[location][index]
       clients[location].splice(index, 1)
-    })
-  */  
+    }) 
   
   })
 }

@@ -1,9 +1,9 @@
 const readline = require('readline')
 
-function inputHandler(key, sendData, clients) {
+function inputHandler({name, shift}, sendData, clients) {
   let location, data
-  const type = key.shift ? 'O2C' : 'O2P'
-  switch (key.name) {
+  const type = shift ? 'O2C' : 'O2P'
+  switch (name) {
   case 'q': {
     location = 'S. Miguel'
     data = 8
@@ -57,10 +57,12 @@ function inputHandler(key, sendData, clients) {
     const receivingClients = clients[location]
     const newData = JSON.stringify([null, data]) //Timestamp, Value
 
-    receivingClients &&
+    if (receivingClients) {
       receivingClients.forEach(client => sendData(client, location, newData))
-    if (receivingClients)
-      console.log(`Message Sent: ${newData} ${receivingClients.length}x`)
+      console.log(`Message Sent to ${location}: ${newData} ${receivingClients.length}x`)
+    } else {
+      console.log(`No clients for ${location}`)
+    }
   }
 }
 
