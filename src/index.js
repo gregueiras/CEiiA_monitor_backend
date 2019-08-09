@@ -5,6 +5,7 @@ const { fakeDataSetup } = require('./fakeData')
 const clients = {}
 const port = 3333
 const locations = []
+let firstTime = true
 
 fakeDataSetup(locations, sendData, clients)
 console.log(locations)
@@ -14,6 +15,7 @@ console.log('listening on port ', port)
 
 function setup() {
   io.on('connection', client => {
+    console.log('New client connected')
     locations.forEach(location => handleConnection(client, location))
   })
 }
@@ -28,7 +30,11 @@ function sendData(client, location, value) {
 
 function handleConnection(client, location) {
   const subName = getSubscriptionName(location)
-  console.log(`Server listening to "${subName}"`)
+  if (firstTime) {
+    console.log(`Server listening to "${subName}"`)
+    firstTime = false
+  }
+
   client.on(subName, (args) => {
     console.log(`client is subscribing to updates from ${location} with ${args}`)
     addClient(location, client)

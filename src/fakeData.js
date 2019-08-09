@@ -55,7 +55,7 @@ function inputHandler({name, shift}, sendData, clients) {
 
   if (location && data) {
     const receivingClients = clients[location]
-    const newData = JSON.stringify([null, data]) //Timestamp, Value
+    const newData = JSON.stringify([location, null, data]) //Timestamp, Value
 
     if (receivingClients) {
       receivingClients.forEach(client => sendData(client, location, newData))
