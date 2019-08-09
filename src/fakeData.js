@@ -1,6 +1,8 @@
 const readline = require('readline')
 
-function inputHandler({name, shift}, sendData, clients) {
+function inputHandler({ name, shift }, sendData, clients) {
+  const buoys = ['B2582', 'B4242']
+
   let location, data
   const type = shift ? 'O2C' : 'O2P'
   switch (name) {
@@ -55,11 +57,14 @@ function inputHandler({name, shift}, sendData, clients) {
 
   if (location && data) {
     const receivingClients = clients[location]
-    const newData = JSON.stringify([location, null, data]) //Timestamp, Value
+    const buoy = buoys[Math.floor(Math.random() * buoys.length)]
+    const newData = JSON.stringify([buoy, null, data]) //BuoyID, Timestamp, Value
 
     if (receivingClients) {
       receivingClients.forEach(client => sendData(client, location, newData))
-      console.log(`Message Sent to ${location}: ${newData} ${receivingClients.length}x`)
+      console.log(
+        `Message Sent to ${location}: ${newData} ${receivingClients.length}x`
+      )
     } else {
       console.log(`No clients for ${location}`)
     }
