@@ -1,6 +1,9 @@
+require('dotenv').config()
 const io = require('socket.io')()
+const express = require('express')
 const md5 = require('md5')
 const { fakeDataSetup } = require('./fakeData')
+const { loadModule } = require('./loader')
 
 const clients = {}
 const port = 3333
@@ -12,6 +15,15 @@ console.log(locations)
 setup()
 io.listen(port)
 console.log('listening on port ', port)
+
+const app = express()
+app.get('/', function (req, res) {
+  console.log(req.query)
+  const { wantedModule } = req.query
+
+  res.json(loadModule(wantedModule))
+})
+app.listen(3334)
 
 function setup() {
   io.on('connection', client => {
@@ -35,17 +47,18 @@ function handleConnection(client, location) {
     firstTime = false
   }
 
-  client.on(subName, (args) => {
-    console.log(`client is subscribing to updates from ${location} with ${args}`)
+  client.on(subName, args => {
+    console.log(
+      `client is subscribing to updates from ${location} with ${args}`
+    )
     addClient(location, client)
-    
-    client.on('disconnect', function () {
+
+    client.on('disconnect', function() {
       const index = clients[location].indexOf(client)
       console.log(location, index)
       delete clients[location][index]
       clients[location].splice(index, 1)
-    }) 
-  
+    })
   })
 }
 
