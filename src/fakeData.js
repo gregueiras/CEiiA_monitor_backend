@@ -4,7 +4,7 @@ function inputHandler({ name, shift }, sendData, clients) {
   const buoys = ['B2582', 'B4242']
 
   let location, data
-  const type = shift ? 'O2C' : 'O2P'
+  const type = shift ? 'O2MG' : 'O2P'
   switch (name) {
   case 'q': {
     location = 'S. Miguel'
@@ -73,9 +73,9 @@ function inputHandler({ name, shift }, sendData, clients) {
 
 function fakeDataSetup(locations, sendData, clients) {
   locations.push('S. MiguelO2P')
-  locations.push('S. MiguelO2C')
+  locations.push('S. MiguelO2MG')
   locations.push('HortaO2P')
-  locations.push('HortaO2C')
+  locations.push('HortaO2MG')
 
   readline.emitKeypressEvents(process.stdin)
   process.stdin.setRawMode(true)

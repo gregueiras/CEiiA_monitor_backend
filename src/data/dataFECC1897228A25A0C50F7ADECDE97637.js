@@ -1,7 +1,7 @@
-const dataO2P = require('./dataFECC1897228A25A0C50F7ADECDE97637/O2P')
-const dataMGL = require('./dataFECC1897228A25A0C50F7ADECDE97637/mgL')
+const { dataO2P } = require('./dataFECC1897228A25A0C50F7ADECDE97637/O2P')
+const { dataMGL } = require('./dataFECC1897228A25A0C50F7ADECDE97637/mgL')
 
-const O2Data = [
+const o2Data = [
   {
     name: 'Max',
     o2P: '90.1',
@@ -22,7 +22,7 @@ const O2Data = [
   },
 ]
 
-const O2Schema = [
+const o2Schema = [
   {
     Header: '',
     accessor: 'name', // String-based value accessors!
@@ -39,7 +39,7 @@ const O2Schema = [
   },
 ]
 
-const MiscData = [
+const miscData = [
   {
     name: 'Max',
     WFms: '2.2',
@@ -60,7 +60,7 @@ const MiscData = [
   },
 ]
 
-const MiscSchema = [
+const miscSchema = [
   {
     Header: '',
     accessor: 'name', // String-based value accessors!,
@@ -79,14 +79,14 @@ const MiscSchema = [
   },
 ]
 
-const O2 = {
-  data: O2Data,
-  schema: O2Schema,
+const o2 = {
+  data: o2Data,
+  schema: o2Schema,
 }
 
-const Misc = {
-  data: MiscData,
-  schema: MiscSchema,
+const misc = {
+  data: miscData,
+  schema: miscSchema,
 }
 
 const dataBuoys = [
@@ -97,16 +97,15 @@ const dataBuoys = [
   {
     name: 'B4242',
     data: JSON.parse(process.env.TEST_DATA_1),
-  },/*
+  },
   {
-    name: "B8952",
+    name: 'B8952',
     data: JSON.parse(process.env.TEST_DATA_2),
   },
   {
-    name: "B1482",
+    name: 'B1482',
     data: JSON.parse(process.env.TEST_DATA_3),
   },
-  */
 ]
 
 const charts = [
@@ -120,7 +119,7 @@ const charts = [
     data: process.env.NODE_ENV === 'development' ? dataBuoys : dataMGL,
     yTitle: 'mg/L',
     title: 'Oxygen (mg/L)',
-    type: 'O2C',
+    type: 'O2MG',
   },
   {
     name: 'Salinity',
@@ -143,4 +142,4 @@ const buoys = [
 
 const name = 'S. Miguel'
 
-module.exports = { O2, Misc, charts, mapCenter, buoys, name}
+module.exports = { o2, misc, charts, mapCenter, buoys, name }

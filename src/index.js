@@ -1,6 +1,7 @@
 require('dotenv').config()
 const io = require('socket.io')()
 const express = require('express')
+const cors = require('cors')
 const md5 = require('md5')
 const { fakeDataSetup } = require('./fakeData')
 const { loadModule } = require('./loader')
@@ -15,9 +16,10 @@ console.log(locations)
 setup()
 io.listen(port)
 console.log('listening on port ', port)
-
+ 
 const app = express()
-app.get('/', function (req, res) {
+app.use(cors())
+app.get('/', function(req, res) {
   console.log(req.query)
   const { wantedModule } = req.query
 
