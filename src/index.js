@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors')
 const md5 = require('md5')
 const { fakeDataSetup } = require('./fakeData')
-const { loadModule } = require('./loader')
+const { loadModule, availableModules } = require('./loader')
 
 const clients = {}
 const port = 3333
@@ -21,9 +21,13 @@ const app = express()
 app.use(cors())
 app.get('/', function(req, res) {
   console.log(req.query)
-  const { wantedModule } = req.query
-
-  res.json(loadModule(wantedModule))
+  
+  if (req.query.wantedModule) {
+    const { wantedModule } = req.query
+    res.json(loadModule(wantedModule))
+  } else {
+    res.json(availableModules())
+  }
 })
 app.listen(3334)
 
