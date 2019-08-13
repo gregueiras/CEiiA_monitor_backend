@@ -22,17 +22,17 @@ function inputHandler({ name, shift }, sendData, clients) {
     break
   }
   case 'w': {
-    location = 'Horta'
+    location = 'Terceira'
     data = 8
     break
   }
   case 's': {
-    location = 'Horta'
+    location = 'Terceira'
     data = 5
     break
   }
   case 'x': {
-    location = 'Horta'
+    location = 'Terceira'
     data = 2
     break
   }
@@ -74,8 +74,8 @@ function inputHandler({ name, shift }, sendData, clients) {
 function fakeDataSetup(locations, sendData, clients) {
   locations.push('S. MiguelO2P')
   locations.push('S. MiguelO2MG')
-  locations.push('HortaO2P')
-  locations.push('HortaO2MG')
+  locations.push('TerceiraO2P')
+  locations.push('TerceiraO2MG')
 
   readline.emitKeypressEvents(process.stdin)
   process.stdin.setRawMode(true)
