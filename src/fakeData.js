@@ -1,5 +1,3 @@
-const readline = require('readline')
-
 function inputHandler({ name, shift }, sendData, clients) {
   const buoys = ['B2582', 'B4242']
 
@@ -77,10 +75,8 @@ function fakeDataSetup(locations, sendData, clients) {
   locations.push('TerceiraO2P')
   locations.push('TerceiraO2MG')
 
-  readline.emitKeypressEvents(process.stdin)
-  process.stdin.setRawMode(true)
-
-  process.stdin.on('keypress', (_, key) => inputHandler(key, sendData, clients))
+  console.log(sendData, clients)  
+  console.log(inputHandler)  
 }
 
 module.exports = {
