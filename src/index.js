@@ -7,7 +7,7 @@ const { fakeDataSetup } = require('./fakeData')
 const { loadModule, availableModules } = require('./loader')
 
 const clients = {}
-const port = 3333
+const port = process.event.PORT || 3333
 const locations = []
 let firstTime = true
 
