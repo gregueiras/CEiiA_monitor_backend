@@ -1,25 +1,24 @@
 require('dotenv').config()
-const io = require('socket.io')()
+const port = process.env.PORT || 4201
+
 const express = require('express')
 const cors = require('cors')
+const app = express()
+const server = require('http').createServer(app)
+const io = require('socket.io').listen(server, { origins: '*:*' })
+
 const md5 = require('md5')
 const { fakeDataSetup } = require('./fakeData')
 const { loadModule, availableModules } = require('./loader')
 
 const clients = {}
-const port = process.env.PORT || 3333
 const locations = []
 let firstTime = true
 
 fakeDataSetup(locations, sendData, clients)
 console.log(locations)
-setup()
-io.listen(port)
-console.log('listening on port ', port)
- 
-const app = express()
-app.use(cors())
-app.get('/', function(req, res) {
+
+app.get('/', cors(), function(req, res) {
   console.log(req.query)
   
   if (req.query.wantedModule) {
@@ -29,7 +28,10 @@ app.get('/', function(req, res) {
     res.json(availableModules())
   }
 })
-app.listen(3334)
+
+setup()
+server.listen(port)
+console.log('listening on port ', port)
 
 function setup() {
   io.on('connection', client => {

@@ -1,3 +1,5 @@
+const setupWatcher = require('./watcher')
+
 function inputHandler({ name, shift }, sendData, clients) {
   const buoys = ['B2582', 'B4242']
 
@@ -75,8 +77,7 @@ function fakeDataSetup(locations, sendData, clients) {
   locations.push('TerceiraO2P')
   locations.push('TerceiraO2MG')
 
-  console.log(sendData, clients)  
-  console.log(inputHandler)  
+  setupWatcher(sendData, clients)
 }
 
 module.exports = {

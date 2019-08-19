@@ -1,5 +1,5 @@
-const {dataO2P} = require('./dataFECC1897228A25A0C50F7ADECDE97637/O2P')
-const {dataMGL} = require('./dataFECC1897228A25A0C50F7ADECDE97637/mgL')
+const { dataO2P } = require('./dataFECC1897228A25A0C50F7ADECDE97637/O2P')
+const { dataMGL } = require('./dataFECC1897228A25A0C50F7ADECDE97637/mgL')
 
 const o2Data = [
   {
@@ -122,13 +122,14 @@ const charts = [
     type: 'O2MG',
   },
   {
-    name: 'Salinity',
-  },
-  {
     name: 'Current Speed',
   },
   {
-    name: 'Temperature',
+    data: process.env.NODE_ENV === 'development' ? dataBuoys : dataMGL,
+    yTitle: 'ºC',
+    title: 'Water Temperature',
+    type: 'WT',
+    name: 'Water Temperature',
   },
 ]
 

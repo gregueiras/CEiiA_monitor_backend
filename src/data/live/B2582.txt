@@ -1,0 +1,102 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2019.08.14 17:05:00 =~=~=~=~=~=~=~=~=~=~=~=
+
+{"date": "14/08/19 - 17:05:00", "temperature":25.81}
+{"date": "14/08/19 - 17:05:00", "temperature":25.81}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.81}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:00", "temperature":25.75}
+{"date": "14/08/19 - 17:05:01", "temperature":25.75}
+{"date": "14/08/19 - 17:05:04", "temperature":25.75}
+{"date": "14/08/19 - 17:05:07", "temperature":25.75}
+{"date": "14/08/19 - 17:05:10", "temperature":25.75}
+{"date": "14/08/19 - 17:05:14", "temperature":25.75}
+{"date": "14/08/19 - 17:05:17", "temperature":25.75}
+{"date": "14/08/19 - 17:05:20", "temperature":25.69}
+{"date": "14/08/19 - 17:05:24", "temperature":25.69}
+{"date": "14/08/19 - 17:05:27", "temperature":25.69}
+{"date": "14/08/19 - 17:05:30", "temperature":25.69}
+{"date": "14/08/19 - 17:05:33", "temperature":25.69}
+{"date": "14/08/19 - 17:05:37", "temperature":25.62}
+{"date": "14/08/19 - 17:05:40", "temperature":25.62}
+{"date": "14/08/19 - 17:05:46", "temperature":25.62}
+{"date": "14/08/19 - 17:05:47", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62}
+{"date": "14/08/19 - 17:05:47", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62}
+{"date": "14/08/19 - 17:05:47", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62}
+{"date": "14/08/19 - 17:05:47", "temperature":25.62}
+{"date": "14/08/19 - 17:05:50", "temperature":25.62, "buoy": "B4242", "location": "S. MiguelO2P"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "Terceira", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "Terceira", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "Terceira", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "Terceira", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B4712", "location": "Terceira", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "S. Miguel", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "S. Miguel", "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "type":"o2p"}
+{"date": "14/08/19 - 17:05:50", "value":25.62, "buoy": "B2582", "location": "S. Miguel", "type":"o2p"}
+
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2p"}
+{"value":5, "buoy": "B4209", "location": "Terceira", "type":"o2p"}
+
+
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+{"value":4, "buoy": "B4520", "location": "Terceira", "type":"o2mgl"}
+{"value":2, "buoy": "B4712", "location": "Terceira", "type":"t"}
+
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+
+{"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}

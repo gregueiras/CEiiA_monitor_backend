@@ -1,4 +1,3 @@
-require('dotenv').config()
-const { availableModules } = require('./loader')
+const setupWatcher = require('./watcher')
 
-console.log(availableModules())
+setupWatcher()

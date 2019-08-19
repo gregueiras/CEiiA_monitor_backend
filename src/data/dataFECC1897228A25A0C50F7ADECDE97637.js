@@ -122,13 +122,14 @@ const charts = [
     type: 'O2MG',
   },
   {
-    name: 'Salinity',
-  },
-  {
     name: 'Current Speed',
   },
   {
-    name: 'Temperature',
+    data: process.env.NODE_ENV === 'development' ? dataBuoys : dataMGL,
+    yTitle: 'ºC',
+    title: 'Water Temperature',
+    type: 'WT',
+    name: 'Water Temperature',
   },
 ]
 

@@ -9,7 +9,9 @@
     "express": "^4.17.1",
     "md5": "^2.2.1",
     "react": "^16.9.0",
+    "read-last-lines": "^1.7.1",
     "reverse-md5": "^0.0.4",
+    "sane": "^4.1.0",
     "socket.io": "^2.2.0"
   },
   "scripts": {
