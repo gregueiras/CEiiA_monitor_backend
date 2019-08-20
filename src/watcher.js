@@ -2,12 +2,13 @@ const sane = require('sane')
 const readLastLines = require('read-last-lines')
 const fs = require('fs')
 const sizes = []
-const path = 'src/data/live'
+const path = '/mnt/c/Users/Public/Downloads/'
 
 async function setupWatcher(sendData, clients) {
-  const watcher = sane(path, { glob: ['**/*.txt'] })
+  const watcher = sane(path, { glob: ['**/*.log'] })
   watcher.on('ready', () => {
-    console.log('watcher ready')
+    console.log('watcher ready ', path)
+
     fs.readdirSync(path).forEach(async file => {
       const filePath = `${path}/${file}`
       const lines = await countLines(filePath) + 1
@@ -31,10 +32,14 @@ async function setupWatcher(sendData, clients) {
       const lines = await readLastLines.read(filePath, linesToRead + 1)
       console.log(lines)
       const linesArr = lines
-        .replace(/\r?\n|\r/g, '')
-        .split('{')
+        .replace(/\n|\r|\t/g, '')
+        .split('}')
         .filter(string => string.length != 0)
-        .map(string => JSON.parse('{' + string))
+        .map(string => {
+          const s = '{"date":"' + string + '}'
+          console.log(s)
+          return JSON.parse(s)
+        })
       console.log(linesArr)
 
       linesArr.forEach(data => {
@@ -42,12 +47,12 @@ async function setupWatcher(sendData, clients) {
           let time
 
           try {
-            const regex = /(\d{2})\/(\d{2})\/(\d{2}) - (\d{2}):(\d{2}):(\d{2})/
+            const regex = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/
             const parts = date.match(regex)
             time = Date.UTC(
-              2000 + +parts[3],
-              parts[2] - 1,
               +parts[1],
+              +parts[2],
+              +parts[3],
               +parts[4],
               +parts[5],
               +parts[6]

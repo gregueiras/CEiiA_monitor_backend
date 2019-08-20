@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const getInfo = require('./data/dataB8A3B8FF2446004197ED248BAD74B3B6')
+require('dotenv-load')()
+const { getMax } = require('./data/aux')
 
 const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
 
@@ -12,7 +13,7 @@ mongoose.connect(uri, {
 })
 
 async function test() {
-  console.log(await getInfo())
+  console.log(await getMax('O2P', 'Terceira'))
 
   process.exit(0)
 }

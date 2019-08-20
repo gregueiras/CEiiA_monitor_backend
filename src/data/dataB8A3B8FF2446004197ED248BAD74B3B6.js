@@ -1,5 +1,4 @@
-const getData = require('./aux')
-
+const {getData} = require('./aux')
 const name = 'Terceira'
 
 async function getInfo() {

@@ -71,12 +71,7 @@ function inputHandler({ name, shift }, sendData, clients) {
   }
 }
 
-function fakeDataSetup(locations, sendData, clients) {
-  locations.push('S. MiguelO2P')
-  locations.push('S. MiguelO2MG')
-  locations.push('TerceiraO2P')
-  locations.push('TerceiraO2MG')
-
+function fakeDataSetup(sendData, clients) {
   setupWatcher(sendData, clients)
 }
 

@@ -108,3 +108,4 @@
 {"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
 {"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
 {"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}

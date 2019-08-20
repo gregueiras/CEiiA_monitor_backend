@@ -44,6 +44,13 @@ server.listen(port)
 console.log('listening on port ', port)
 
 function setup() {
+  locations.push('S. MiguelO2P')
+  locations.push('S. MiguelO2MG')
+  locations.push('S. MiguelWT')
+  locations.push('TerceiraO2P')
+  locations.push('TerceiraO2MG')
+  locations.push('TerceiraWT')
+
   const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
 
   const uri = `mongodb+srv://gregueiras:${
