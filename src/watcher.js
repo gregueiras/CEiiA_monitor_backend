@@ -1,6 +1,8 @@
 const sane = require('sane')
 const readLastLines = require('read-last-lines')
 const fs = require('fs')
+const {saveData} = require('./database/aux')
+
 const sizes = []
 const path = '/mnt/c/Users/Public/Downloads/'
 
@@ -11,7 +13,7 @@ async function setupWatcher(sendData, clients) {
 
     fs.readdirSync(path).forEach(async file => {
       const filePath = `${path}/${file}`
-      const lines = await countLines(filePath) + 1
+      const lines = (await countLines(filePath)) + 1
       console.log(file, lines)
       sizes[`${file}`] = lines
     })
@@ -21,7 +23,7 @@ async function setupWatcher(sendData, clients) {
     try {
       const filePath = `${path}/${event}`
       const prevLines = sizes[`${event}`]
-      const newLines = await countLines(filePath) + 1
+      const newLines = (await countLines(filePath)) + 1
 
       const linesToRead = newLines - prevLines
       console.log(`New Lines: ${linesToRead}\tTotal Lines: ${newLines} `)
@@ -70,6 +72,13 @@ async function setupWatcher(sendData, clients) {
         const location = buoyLocation + buoyType
         const receivingClients = clients[location]
         const msg = prepareData(data)
+        saveData({
+          location: buoyLocation,
+          type: buoyType,
+          value: msg[2],
+          timeStamp: msg[1],
+          buoy: msg[0],
+        })
 
         if (receivingClients) {
           receivingClients.forEach(client =>
