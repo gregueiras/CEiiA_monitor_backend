@@ -18,9 +18,9 @@ const locations = []
 let firstTime = true
 const cache = {}
 
-fakeDataSetup(locations, sendData, clients)
-console.log(locations)
+fakeDataSetup(sendData, clients)
 setup()
+console.log(locations)
 
 app.get('/', cors(), async function(req, res) {
   console.log(req.query)
