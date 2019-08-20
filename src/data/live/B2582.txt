@@ -100,3 +100,11 @@
 {"value":1, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
 {"value":2, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
 {"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2019.08.14 17:05:00 =~=~=~=~=~=~=~=~=~=~=~=
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}
+{"value":3, "buoy": "B4241", "location": "Terceira", "type":"o2p"}

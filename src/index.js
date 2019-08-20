@@ -1,4 +1,6 @@
-require('dotenv').config()
+require('dotenv-load')()
+const mongoose = require('mongoose')
+
 const port = process.env.PORT || 4201
 
 const express = require('express')
@@ -14,26 +16,44 @@ const { loadModule, availableModules } = require('./loader')
 const clients = {}
 const locations = []
 let firstTime = true
+const cache = {}
 
 fakeDataSetup(locations, sendData, clients)
 console.log(locations)
+setup()
 
-app.get('/', cors(), function(req, res) {
+app.get('/', cors(), async function(req, res) {
   console.log(req.query)
-  
+
   if (req.query.wantedModule) {
     const { wantedModule } = req.query
-    res.json(loadModule(wantedModule))
+
+    if (cache[wantedModule]) {
+      res.json(cache[wantedModule])
+    } else {
+      const myMod = await loadModule(wantedModule)
+      cache[wantedModule] = myMod
+      res.json(myMod)
+    }
   } else {
     res.json(availableModules())
   }
 })
 
-setup()
 server.listen(port)
 console.log('listening on port ', port)
 
 function setup() {
+  const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
+
+  const uri = `mongodb+srv://gregueiras:${
+    process.env.MONGO_PASS
+  }@cluster0-b0rlq.mongodb.net/${mode}?retryWrites=true&w=majority`
+
+  mongoose.connect(uri, {
+    useNewUrlParser: true,
+  })
+
   io.on('connection', client => {
     console.log('New client connected')
     locations.forEach(location => handleConnection(client, location))

@@ -1,16 +1,19 @@
 const fs = require('fs')
 const dataFolder = './data/'
 
-function loadModule(moduleName) {
+async function loadModule(moduleName) {
   const path = `./data/data${moduleName}`
-  const data = require(path)
+  const { getInfo } = require(path)
 
-  return data
+  console.log(`Request ${moduleName}`)
+  const info = await getInfo()
+  console.log(`Module loaded ${moduleName}`)
+  return info
 }
 
 function availableModules() {
-  const regex = /.*(\.js)/gm
-
+  const regex = /^(data)(.*)\.js/gm
+  
   const folder = fs.readdirSync(`${__dirname}/${dataFolder}`)
   return folder
     .filter(val => val.match(regex))
