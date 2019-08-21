@@ -26,14 +26,24 @@ app.get('/', cors(), async function(req, res) {
   console.log(req.query)
 
   if (req.query.wantedModule) {
-    const { wantedModule } = req.query
+    const { wantedModule, wantedType } = req.query
 
-    if (cache[wantedModule]) {
+    if (cache[wantedModule] && !wantedType) {
       res.json(cache[wantedModule])
     } else {
       const myMod = await loadModule(wantedModule)
       cache[wantedModule] = myMod
-      res.json(myMod)
+
+      if (wantedType) {
+        const wantedData = myMod.charts.filter(({type}) => type === wantedType)
+        if (wantedData.length === 1) {
+          res.json(wantedData[0].data)
+        } else {
+          res.sendStatus(404)
+        }
+      } else {
+        res.json(myMod)
+      }
     }
   } else {
     res.json(availableModules())
