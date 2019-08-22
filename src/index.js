@@ -8,19 +8,58 @@ const cors = require('cors')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io').listen(server, { origins: '*:*' })
+const fs = require('fs')
 
 const md5 = require('md5')
 const { fakeDataSetup } = require('./fakeData')
 const { loadModule, availableModules } = require('./loader')
+const { runSimulation } = require('../python/exec')
 
 const clients = {}
 const locations = []
 let firstTime = true
 const cache = {}
+let cacheSimulation = {}
+const cacheSimulationPath = './src/cache/simulationCache.json'
 
 fakeDataSetup(sendData, clients)
 setup()
 console.log(locations)
+
+app.get('/simulation', cors(), async function(req, res) {
+  console.log('Simulation, ', req.query)
+
+  let simulation
+  let index = req.query ? 'default' : JSON.stringify(req.query).replace(/{|}/g, '')
+
+  if (!cacheSimulation[index] || req.query.reCalc) {
+    simulation = await runSimulation()
+    cacheSimulation[index] = simulation
+    fs.writeFile(cacheSimulationPath, JSON.stringify(cacheSimulation), err => {
+      if (err) console.error(err)
+    })
+  } else {
+    simulation = cacheSimulation[index]
+  }
+
+  const { data, image } = simulation
+
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Display Image</title>
+      </head>
+      <body>
+        <img 
+          id='base64image'                 
+          src='data:image/png;base64, ${image}'
+        />
+        <p>${data.replace(/\n/g, '<br/>')}<p/>
+      </body>
+    </html>
+  `)
+})
 
 app.get('/', cors(), async function(req, res) {
   console.log(req.query)
@@ -35,7 +74,9 @@ app.get('/', cors(), async function(req, res) {
       cache[wantedModule] = myMod
 
       if (wantedType) {
-        const wantedData = myMod.charts.filter(({type}) => type === wantedType)
+        const wantedData = myMod.charts.filter(
+          ({ type }) => type === wantedType
+        )
         if (wantedData.length === 1) {
           res.json(wantedData[0].data)
         } else {
@@ -54,6 +95,11 @@ server.listen(port)
 console.log('listening on port ', port)
 
 function setup() {
+  fs.readFile(cacheSimulationPath, (err, data) => {
+    console.log('READ ', data.toString())
+    if (data) cacheSimulation = JSON.parse(data.toString())
+  })
+
   locations.push('S. MiguelO2P')
   locations.push('S. MiguelO2MG')
   locations.push('S. MiguelWT')
