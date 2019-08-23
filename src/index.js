@@ -96,7 +96,7 @@ console.log('listening on port ', port)
 
 function setup() {
   fs.readFile(cacheSimulationPath, (err, data) => {
-    console.log('READ ', data.toString())
+    console.log('Loaded simulation cache')
     if (data) cacheSimulation = JSON.parse(data.toString())
   })
 
