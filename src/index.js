@@ -33,7 +33,7 @@ app.get('/simulation', cors(), async function(req, res) {
   let index = req.query ? 'default' : JSON.stringify(req.query).replace(/{|}/g, '')
 
   if (!cacheSimulation[index] || req.query.reCalc) {
-    simulation = await runSimulation()
+    simulation = await runSimulation(35)
     cacheSimulation[index] = simulation
     fs.writeFile(cacheSimulationPath, JSON.stringify(cacheSimulation), err => {
       if (err) console.error(err)
