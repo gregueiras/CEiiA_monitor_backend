@@ -1,7 +1,7 @@
 const sane = require('sane')
 const readLastLines = require('read-last-lines')
 const fs = require('fs')
-const {saveData} = require('./database/aux')
+const {saveData} = require('./database/util')
 
 const sizes = []
 const path = '/mnt/c/Users/Public/Downloads/'

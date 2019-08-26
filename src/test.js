@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv-load')()
-const { getData } = require('./data/aux')
-const { saveData } = require('./database/aux')
+const { getData } = require('./data/util')
+const { saveData } = require('./database/util')
 
 const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
 

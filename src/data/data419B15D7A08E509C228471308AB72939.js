@@ -1,4 +1,4 @@
-const { getData } = require('./aux')
+const { getData } = require('./util')
 const name = 'Madeira'
 
 async function getInfo() {
