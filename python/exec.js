@@ -14,7 +14,7 @@ function escape(str) {
     .replace(/"/g, '')
 }
 
-function runSimulation(
+function runSimulation({
   latitude = 38,
   longitude = 12,
   randomLowerBound = -0.3,
@@ -24,8 +24,8 @@ function runSimulation(
   time_jumps = '[0.0625, 5.78703704e-5, 5.78703704e-5, 5.78703704e-5, 5.78703704e-5, 5.78703704e-5, 5.78703704e-5, 0.000694444444, 0.0625]',
   time_steps = '[4, 1, 1, 1, 1, 1, 1, 10, 3]',
   turns = '[0.523333333,0.523333333,0.523333333,0.523333333,0.523333333,0.523333333,0,0]',
-  velocity = '[0,2,2,2,2,2,2,2,2,2,2,2,0]'
-) {
+  velocity = '[0,2,2,2,2,2,2,2,2,2,2,2,0]',
+}) {
   return new Promise(resolve => {
     const cmd = `cd ${PYTHON_PATH} && pipenv run python ${fileName} ${latitude} ${longitude} ${randomLowerBound} ${randomUpperBond} ${area} ${radius} ${escape(time_jumps
     )} ${escape(time_steps)} ${escape(turns)} ${escape(velocity)}`
@@ -49,4 +49,4 @@ function runSimulation(
   })
 }
 
-module.exports = { runSimulation }
+module.exports = { escape, runSimulation }

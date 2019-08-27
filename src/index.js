@@ -26,14 +26,24 @@ fakeDataSetup(sendData, clients)
 setup()
 console.log(locations)
 
-app.get('/simulation', cors(), async function(req, res) {
+app.get('/simulation', cors(), async function (req, res) {
   console.log('Simulation, ', req.query)
 
   let simulation
-  let index = req.query ? 'default' : JSON.stringify(req.query).replace(/{|}/g, '')
+  let index = req.query
+    ? JSON.stringify(req.query).replace(/{|}/g, '')
+    : 'default'
 
   if (!cacheSimulation[index] || req.query.reCalc) {
-    simulation = await runSimulation(35)
+    console.log(req.query.time_jumps)
+    if (req.query.time_jumps) {
+      req.query.time_jumps = `[${req.query.time_jumps}]`
+      req.query.time_steps = `[${req.query.time_steps}]`
+      req.query.turns = `[${req.query.turns}]`
+      req.query.velocity = `[${req.query.velocity}]`
+    }
+
+    simulation = await runSimulation(req.query)
     cacheSimulation[index] = simulation
     fs.writeFile(cacheSimulationPath, JSON.stringify(cacheSimulation), err => {
       if (err) console.error(err)
@@ -44,21 +54,10 @@ app.get('/simulation', cors(), async function(req, res) {
 
   const { data, image } = simulation
 
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Display Image</title>
-      </head>
-      <body>
-        <img 
-          id='base64image'                 
-          src='data:image/png;base64, ${image}'
-        />
-        <p>${data.replace(/\n/g, '<br/>')}<p/>
-      </body>
-    </html>
-  `)
+  res.send({
+    image,
+    data
+  })
 })
 
 app.get('/', cors(), async function(req, res) {
@@ -109,9 +108,7 @@ function setup() {
 
   const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
 
-  const uri = `mongodb+srv://gregueiras:${
-    process.env.MONGO_PASS
-  }@cluster0-b0rlq.mongodb.net/${mode}?retryWrites=true&w=majority`
+  const uri = `mongodb+srv://gregueiras:${process.env.MONGO_PASS}@cluster0-b0rlq.mongodb.net/${mode}?retryWrites=true&w=majority`
 
   mongoose.connect(uri, {
     useNewUrlParser: true,
