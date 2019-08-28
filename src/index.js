@@ -64,7 +64,8 @@ app.get('/', cors(), async function(req, res) {
   console.log(req.query)
 
   if (req.query.wantedModule) {
-    const { wantedModule, wantedType } = req.query
+    const { wantedModule: temp, wantedType } = req.query
+    const wantedModule = temp.toUpperCase()
 
     if (cache[wantedModule] && !wantedType) {
       res.json(cache[wantedModule])
