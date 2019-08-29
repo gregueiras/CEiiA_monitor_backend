@@ -1,4 +1,4 @@
-const {getData} = require('./util')
+const { getData } = require('./util')
 const name = 'Terceira'
 
 async function getInfo() {
@@ -98,10 +98,32 @@ async function getInfo() {
     { lat: 38.596731, lng: -26.989337, key: 'B4209' },
   ]
 
-  const [dataO2P, dataO2MG, dataWT] = await Promise.all([
+  const [
+    dataO2P,
+    dataO2MG,
+    dataWT,
+    dataAX,
+    dataAY,
+    dataAZ,
+    dataMX,
+    dataMY,
+    dataMZ,
+    dataGX,
+    dataGY,
+    dataGZ,
+  ] = await Promise.all([
     getData('O2P', name, buoys),
     getData('O2MG', name, buoys),
     getData('WT', name, buoys),
+    getData('AX', name, buoys),
+    getData('AY', name, buoys),
+    getData('AZ', name, buoys),
+    getData('MX', name, buoys),
+    getData('MY', name, buoys),
+    getData('MZ', name, buoys),
+    getData('GX', name, buoys),
+    getData('GY', name, buoys),
+    getData('GZ', name, buoys),
   ])
 
   const charts = [
@@ -118,7 +140,81 @@ async function getInfo() {
       type: 'O2MG',
     },
     {
-      name: 'Current Speed',
+      name: 'Accelerometer & Gyroscope',
+      charts: [
+        {
+          type: 'AX',
+          yTitle: 'g',
+          title: 'Acceleration Axis X',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataAX },
+          ],
+        },
+        {
+          type: 'AY',
+          yTitle: 'g',
+          title: 'Acceleration Axis Y',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataAY },
+          ],
+        },
+        {
+          type: 'AZ',
+          yTitle: 'g',
+          title: 'Acceleration Axis Z',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataAZ },
+          ],
+        },
+        {
+          type: 'GX',
+          yTitle: 'º/s',
+          title: 'Spin Axis X',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataGX },
+          ],
+        },
+        {
+          type: 'GY',
+          yTitle: 'º/s',
+          title: 'Spin Axis Y',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataGY },
+          ],
+        },
+        {
+          type: 'GZ',
+          yTitle: 'º/s',
+          title: 'Spin Axis Z',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataGZ },
+          ],
+        },
+        {
+          type: 'MX',
+          yTitle: 'µT',
+          title: 'Magnetic Field Axis X',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataMX },
+          ],
+        },
+        {
+          type: 'MY',
+          yTitle: 'µT',
+          title: 'Magnetic Field Axis Y',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataMY },
+          ],
+        },
+        {
+          type: 'MZ',
+          yTitle: 'µT',
+          title: 'Magnetic Field Axis Z',
+          data: [
+            { name: 'B4712', data: [[1567004975000, 10], [1567004979000, 12]] || dataMZ },
+          ],
+        },
+      ],
     },
     {
       data: dataWT,

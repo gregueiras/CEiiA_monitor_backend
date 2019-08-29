@@ -100,14 +100,21 @@ function setup() {
     if (data) cacheSimulation = JSON.parse(data.toString())
   })
 
-  locations.push('S. MiguelO2P')
-  locations.push('S. MiguelO2MG')
-  locations.push('S. MiguelWT')
-  locations.push('TerceiraO2P')
-  locations.push('TerceiraO2MG')
   locations.push('TerceiraWT')
 
-  const mode = process.env.NODE_ENV === 'development' ? 'test' : 'buoy'
+  locations.push('TerceiraAX')
+  locations.push('TerceiraAY')
+  locations.push('TerceiraAZ')
+  
+  locations.push('TerceiraGX')
+  locations.push('TerceiraGY')
+  locations.push('TerceiraGZ')
+  
+  locations.push('TerceiraMX')
+  locations.push('TerceiraMY')
+  locations.push('TerceiraMZ')
+
+  const mode = process.env.NODE_ENV === 'developmentA' ? 'test' : 'buoy'
 
   const uri = `mongodb+srv://gregueiras:${process.env.MONGO_PASS}@cluster0-b0rlq.mongodb.net/${mode}?retryWrites=true&w=majority`
 
