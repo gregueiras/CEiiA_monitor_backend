@@ -14,7 +14,7 @@
     "read-last-lines": "^1.7.1",
     "reverse-md5": "^0.0.4",
     "sane": "^4.1.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.0"
   },
   "scripts": {
     "start": "node src/index.js",
